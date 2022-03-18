@@ -5,6 +5,7 @@ public class Planta_electrica extends Ciudad {
 	private Ciudad ciudad;
 	private ArrayList<Integer> consumo;
 	private double tarifa;
+	private int totalMega;
 	
 	public Planta_electrica(String nombre) {
 		super(nombre);
@@ -42,6 +43,14 @@ public class Planta_electrica extends Ciudad {
 		this.ciudad = ciudad;
 	}
 	
+	public int getTotalMega() {
+		return totalMega;
+	}
+
+	public void setTotalMega(int totalMega) {
+		this.totalMega = totalMega;
+	}
+
 	public ArrayList<Integer> consumoCiudades() {
 		consumo = new ArrayList<Integer>();
 		int i = 0;
@@ -52,12 +61,20 @@ public class Planta_electrica extends Ciudad {
 		return consumo;
 	}
 	
-	public double tarifas(double tarifas) {
-		int contador = 0;
+	public int consumoTotal() {
+		int resultado = 0;
 		for(int i = 0; i < consumo.size(); i++) {
-			contador++;
+			resultado = resultado + consumo.get(i);
 		}
-		return tarifa = (double) tarifas*contador;
+		return totalMega = resultado;		
+	}
+	
+	public double tarifas(double tarifas) {
+		double resultado = 0.0;
+		for(int i = 0; i < consumo.size(); i++) {
+			resultado = resultado + consumo.get(i);
+		}
+		return tarifa = (double) tarifas*resultado;
 	}
 	
 	@Override
