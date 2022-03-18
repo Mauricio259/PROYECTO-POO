@@ -32,3 +32,50 @@ public class Main_empresa {
 			leer = new Scanner(System.in);
 			System.out.print("Ingrese el item: ");
 			item = leer.nextInt();
+			
+			if(item > 0 && item < 6) {
+				if(item == 1) {
+					leer = new Scanner(System.in);
+					System.out.print("Planta electrica: ");
+					planta = leer.nextLine();
+					System.out.print("Region: ");
+					region = leer.nextLine();
+					if(planta.toLowerCase().equals("coca codo sinclair")) {
+						sinclair = new Planta_electrica(planta);
+						if(region.toLowerCase().equals("costa")) {
+							costa = new Region(region);
+							leer = new Scanner(System.in);
+							System.out.print("Cantidad de ciudades que va a ingresar: ");
+							cant = leer.nextInt();
+							int i = 0;
+							while(i < cant) {
+								leer = new Scanner(System.in);
+								System.out.print("Ciudad: ");
+								canton = leer.nextLine();
+								ciudad = new Ciudad(canton);
+								ciudadCosta.add(ciudad);
+								consCiudadesSinc.put(ciudadCosta.get(i).getNombre(), sinclair);
+								i++;
+							}
+							costa.setCiudad(ciudadCosta);
+							sinclair.setRegion(costa);
+						}
+						if(region.toLowerCase().equals("sierra")) {
+							sierra = new Region(region);
+							leer = new Scanner(System.in);
+							System.out.print("Cantidad de ciudades que va a ingresar: ");
+							cant = leer.nextInt();
+							int i = 0;
+							while(i < cant) {
+								leer = new Scanner(System.in);
+								System.out.print("Ciudad: ");
+								canton = leer.nextLine();
+								ciudad = new Ciudad(canton);
+								ciudadSierra.add(ciudad);
+								consCiudadesSinc.put(ciudadSierra.get(i).getNombre(), sinclair);
+								i++;
+							}
+							sierra.setCiudad(ciudadSierra);
+							sinclair.setRegion(sierra);
+						}
+						
